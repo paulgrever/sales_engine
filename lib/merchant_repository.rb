@@ -21,6 +21,7 @@ end
 test = MerchantRepository.new
 john = test.create_merchants
 john.each do |merch|
-  puts "ID Number #{merch.id} is #{merch.name} they were created on #{merch.created_at}"
+  puts merch.id.class
+  # puts "ID Number #{merch.id} is #{merch.name} they were created on #{merch.created_at}"
 end
 
