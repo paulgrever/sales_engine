@@ -10,4 +10,6 @@ class MerchantTest < Minitest::Test
     assert Merchant
   end
 
+  
+
 end
