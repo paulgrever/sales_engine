@@ -35,8 +35,4 @@ class MerchantTest < Minitest::Test
     double = "#{merchant.id},#{merchant.name}"
     assert_equal "1,Paul", double
   end
-
-  
-
-
 end

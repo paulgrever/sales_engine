@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './lib/merchant_repository'
 require 'csv'
 
-
 class MerchantRepositoryTest < Minitest::Test
   attr_reader :merchant_repository, :merchant_repo
 
