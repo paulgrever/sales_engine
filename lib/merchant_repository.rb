@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 class MerchantRepository
   attr_reader :entries
 
-    def initialize
-      merchant_repo = CSV.open "./data/merchants.csv", headers: true, header_converters: :symbol
-    end
+  def initialize
+    merchant_repo = CSV.open "./data/merchants.csv", headers: true, header_converters: :symbol
+  end
 
   def all
     entries
@@ -19,11 +18,11 @@ class MerchantRepository
   end
 
   def find_all_by_X(match)
-
+    #entries.select
   end
 
   def items
-
+    #entries.select
   end
 
   def invoices
@@ -43,7 +42,8 @@ class MerchantRepository
   end
 
 end
-=======
+
+
 require 'csv'
 require './lib/merchant'
 
@@ -58,19 +58,17 @@ class MerchantRepository
       updated_at = merchant[:updated_at]
       Merchant.new(id, name, created_at, updated_at)
     end
-    merchant_array    
+    merchant_array
   end
-
-
 
 end
 
 test = MerchantRepository.new
 john = test.create_merchants
 p
-# john.each do |merch|
-#   # puts merch.id.class
-#    puts "ID Number #{merch.id} is #{merch.name} they were created on #{merch.created_at} last updated at #{merch.updated_at}"
-# end
-
->>>>>>> e386f39eb7b33db60542384e6990c0211fb285c5
+john.each do |merch|
+   puts merch.id.class
+   puts "ID Number #{merch.id} is #{merch.name}\n
+    they were created on #{merch.created_at} \n
+    last updated at #{merch.updated_at}"
+end
