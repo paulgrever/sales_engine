@@ -1,13 +1,14 @@
 require './lib/customers'
+require 'pry'
 
 class CustomersParser
-  attr_reader :customer_file
+  attr_reader :customer_file, :customer_arr
   def initialize(filename)
     @customer_file = create_customers(filename)
   end
   def create_customers(filename)
       customers = CSV.open "#{filename}", headers: true, header_converters: :symbol
-      customer_array = customers.map do |customer|
+      @customer_array = customers.map do |customer|
       id = customer[:id]
       first_name = customer[:first_name]
       last_name = customer[:last_name]
@@ -20,6 +21,7 @@ end
 
 filename = "./data/customers.csv"
 test = CustomersParser.new(filename)
+binding.pry
 test.customer_file.each do |name|
   puts name.first_name
 end
