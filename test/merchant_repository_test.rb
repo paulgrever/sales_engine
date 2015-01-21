@@ -40,8 +40,25 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_display_all_merchants
-    results = @merchant_repo.all_merchants
+    results = @merchant_repo.all
     assert_equal 100, results.size
   end
 
+  def test_it_includes_merchants_names
+    results =@merchant_repo.all
+    results.include?("Zemlak")
+    assert results
+  end
+
+  def test_it_includes_merchants_creates_times
+    results =@merchant_repo.all
+    results.include?("2012-03-27 14:54:08 UTC")
+    assert results
+  end
+
+  def test_it_creates_a_readable_out_put_with_all_valid_info
+    results =@merchant_repo.all
+    results.include?("ID:85, Name:Sauer and Sons, Created Date:2012-03-27 14:54:07 UTC, Last Updated: 2012-03-27 14:54:07 UTC")
+    assert results
+  end
 end
