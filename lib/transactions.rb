@@ -10,5 +10,6 @@ class Transactions
     @credit_card_expiration_date = credit_card_expiration_date
     @result = result
     @created_at = created_at
+    @updated_at = updated_at
   end
 end
