@@ -16,27 +16,27 @@ class CustomersTest < Minitest::Test
   end
 
   def test_it_takes_id
-    skip
+    #skip
     assert_equal "1", customers.id
   end
 
   def test_it_takes_first_name
-    skip
+    #skip
     assert_equal "Joey", customers.first_name
   end
 
   def test_it_takes_last_name
-    skip
+    #skip
     assert_equal "Ondricka", customers.last_name
   end
 
   def test_it_was_created_at_certain_date
-    skip
+    #skip
     assert_equal "2012-03-27 14:54:09 UTC", customers.created_at
   end
 
   def test_it_was_updated_at_certain_date
-    skip
+    #skip
     assert_equal "2012-03-27 14:54:09 UTC", customers.updated_at
   end
 
