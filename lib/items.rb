@@ -3,7 +3,8 @@ require 'csv'
 class Items
   attr_reader :id, :name, :description, :unit_price,
               :merchant_id,:created_at, :updated_at
-  def initialize(id, name, descrption, unit_price, merchant_id, created_at, updated_at)
+  def initialize(id, name, description, unit_price, merchant_id, created_at, updated_at)
+    @id = id
     @name = name
     @description = description
     @unit_price = unit_price
