@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/merchant_repository'
 require 'csv'
+require 'pry'
 
 class MerchantRepositoryTest < Minitest::Test
   attr_reader :merchant_repository, :merchant_repo
@@ -67,6 +68,7 @@ class MerchantRepositoryTest < Minitest::Test
     results1 = merchant_repo.random
     results2 = merchant_repo.random
     verify = results1 == results2
+    binding.pry
     refute verify
   end
 end

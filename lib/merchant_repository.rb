@@ -2,6 +2,7 @@ require 'csv'
 require './lib/merchants'
 require 'pry'
 class MerchantRepository
+  attr_reader :merchant_array
 
   def create_merchants
     merchants = CSV.open './data/merchants.csv', headers: true, header_converters: :symbol
