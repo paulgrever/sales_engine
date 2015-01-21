@@ -1,6 +1,6 @@
 require 'csv'
 require './lib/merchants'
-
+require 'pry'
 class MerchantRepository
 
   def create_merchants
@@ -27,7 +27,7 @@ class MerchantRepository
       puts "ID:#{rando.id}, Name:#{rando.name}, Created Date:#{rando.created_at}, Last Updated: #{rando.updated_at}"
   end
 
-  
+
 
 
 
