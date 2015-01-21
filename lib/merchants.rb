@@ -1,6 +1,6 @@
 require 'csv'
 
-class Merchant
+class Merchants
   attr_reader :id, :name, :created_at, :updated_at
 
   def initialize(id, name, created_at, updated_at)
@@ -11,5 +11,5 @@ class Merchant
   end
 end
 
-# test = Merchant.new("3", "paul", "9/20", "9/21")
+# test = Merchants.new("3", "paul", "9/20", "9/21")
 # puts test.name

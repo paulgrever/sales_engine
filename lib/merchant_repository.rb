@@ -1,6 +1,6 @@
 require 'csv'
 require 'pry'
-require './lib/merchant'
+require './lib/merchants'
 
 class MerchantRepository
 
@@ -11,7 +11,7 @@ class MerchantRepository
       name = merchant[:name]
       created_at = merchant[:created_at]
       updated_at = merchant[:updated_at]
-      Merchant.new(id, name, created_at, updated_at)
+      Merchants.new(id, name, created_at, updated_at)
     end
     @merchant_array
   end
