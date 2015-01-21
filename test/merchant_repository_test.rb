@@ -5,11 +5,11 @@ require 'csv'
 
 
 class MerchantRepositoryTest < Minitest::Test
-  attr_reader :merchant_repository
+  attr_reader :merchant_repository, :merchant_repo
 
   def setup
-    merchant_repository = MerchantRepository.new
-    @merchant_repository = merchant_repository.create_merchants
+    @merchant_repo = MerchantRepository.new
+    @merchant_repository = merchant_repo.create_merchants
   end
 
   def test_it_exists
@@ -40,14 +40,9 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal "2012-03-27 14:54:00 UTC", results.updated_at
   end
 
-  def test_it_can_display_all
-    merchant_repository
+  def test_it_can_display_all_merchants
+    results = @merchant_repo.all_merchants
+    assert_equal 100, results.size
   end
-
-  # def test_it_matches_correct_dates_and_revenue
-  #   results = merchant_repository[5]
-  #
-  #   assert_equal "Williamson Group", results.revenue
-  # end
 
 end
