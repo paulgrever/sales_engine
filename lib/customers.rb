@@ -1,6 +1,6 @@
 require 'csv'
 
-class Customer
+class Customers
   attr_reader :id, :first_name, :last_name,
               :created_at, :updated_at,
 

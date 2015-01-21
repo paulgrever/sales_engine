@@ -15,6 +15,3 @@ class InvoiceItems
   end
 
 end
-
-# id,item_id,invoice_id,quantity,unit_price,created_at,updated_at
-# 1,539,1,5,13635,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC

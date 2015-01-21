@@ -1,9 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/merchant'
+require_relative '../lib/items'
 require 'csv'
 
 
-class MerchantTest < Minitest::Test
-  attr_reader :merchant
-  
+class ItemsTest < Minitest::Test
+  attr_reader :items
+end

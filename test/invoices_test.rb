@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/invoices'
-require 'pry'
 require 'csv'
 
 
