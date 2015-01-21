@@ -20,9 +20,7 @@ class CustomerTest < Minitest::Test
 
   def test_it_takes_id
     skip
-    
-
-
+  end
 
 end
   # id,first_name,last_name,created_at,updated_at
