@@ -17,24 +17,24 @@ class CustomersParserTest < Minitest::Test
   end
 
   def test_it_creates_an_array_with_five_customers
-    results = parse.customer_list
+    results = parse.parse
     assert_equal 5, results.count
   end
 
   def test_it_includes_valid_unique_id_numbers
-    results = parse.customer_list
+    results = parse.parse
     verify = results.one? {|customer| customer.id == "3"}
     assert verify
   end
 
   def test_it_does_not_include_valid_numbers
-    results = parse.customer_list
+    results = parse.parse
     verify = results.one? {|customer| customer.id == "7"}
     refute verify
   end
 
   def test_it_does_include_valid_last_names
-    results = parse.customer_list
+    results = parse.parse
     verify = results.one? {|customer|  customer.last_name == "Braun"}
     assert verify
   end

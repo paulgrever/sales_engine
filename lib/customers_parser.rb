@@ -1,11 +1,12 @@
 require './lib/customer'
 require 'pry'
+require 'csv'
 
 class CustomersParser
-  attr_reader :customer_list, :parent_class
+  attr_reader :parse, :parent_class
 
   def initialize(filename, parent_class)
-    @customer_list = create_customers(filename, parent_class)
+    @parse = create_customers(filename, parent_class)
   end
 
   def create_customers(filename, parent_class)
@@ -20,6 +21,7 @@ class CustomersParser
     end
   end
 end
+
 
 # module Parser
 
