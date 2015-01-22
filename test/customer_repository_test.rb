@@ -33,4 +33,19 @@ class CustomerRepositoryTest < Minitest::Test
     refute results.include?('Paul')
   end
 
+  def test_random_doesnt_repeate_itself_most_of_the_time
+    results = cust_repo.random
+    results2 = cust_repo.random
+    assert_equal false, results == results2
+  end
+
+  def test_random_selects_a_customer_from_csv_list
+    skip
+    results = cust_repo.random
+    verify = cust_repo.all_customer_list.include?(results)
+    assert verify
+  end
+
+
+
 end

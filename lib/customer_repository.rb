@@ -23,4 +23,5 @@ end
 filename = "test/fixtures/customers_fixtures.csv"
 test = CustomerRepository.new(filename, "test")
 
-test.all
+p test.random
+p test.random
