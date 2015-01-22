@@ -18,14 +18,14 @@ class MerchantRepository
 
   def all
     @merchant_array.each do |merch|
-      puts "ID:#{merch.id}, Name:#{merch.name}, Created Date:#{merch.created_at}, Last Updated: #{merch.updated_at}"
+       "ID:#{merch.id}, Name:#{merch.name}, Created Date:#{merch.created_at}, Last Updated: #{merch.updated_at}"
     end
     @merchant_array
   end
 
   def random
     rando = @merchant_array.sample
-      puts "ID:#{rando.id}, Name:#{rando.name}, Created Date:#{rando.created_at}, Last Updated: #{rando.updated_at}"
+       "ID:#{rando.id}, Name:#{rando.name}, Created Date:#{rando.created_at}, Last Updated: #{rando.updated_at}"
   end
 
 
@@ -34,6 +34,6 @@ class MerchantRepository
 
 end
 
-test = MerchantRepository.new
-merchs = test.create_merchants
-test.random
+# test = MerchantRepository.new
+# merchs = test.create_merchants
+# test.random

@@ -1,4 +1,4 @@
-class Customers
+class Customer
   attr_reader :id, :first_name, :last_name, :created_at, :updated_at, :parent_class
 
   def initialize(id, first_name, last_name, created_at, updated_at, parent_class)

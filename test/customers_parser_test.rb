@@ -8,8 +8,35 @@ class CustomersParserTest < Minitest::Test
   attr_reader :parse
 
   def setup
-    @file = CSV.open "test/fixtures/customers_fixtures.csv", headers: true, header_converters: :symbol
-    @parse = CustomersParser.new(@file, "parent_class")
+    filename = "test/fixtures/customers_fixtures.csv"
+    @parse = CustomersParser.new(filename, "parent_class")
+  end
+
+  def test_it_exists
+    assert CustomersParser
+  end
+
+  def test_it_creates_an_array_with_five_customers
+    results = parse.customer_list
+    assert_equal 5, results.count
+  end
+
+  def test_it_includes_valid_unique_id_numbers
+    results = parse.customer_list
+    verify = results.one? {|customer| customer.id == "3"}
+    assert verify
+  end
+
+  def test_it_does_not_include_valid_numbers
+    results = parse.customer_list
+    verify = results.one? {|customer| customer.id == "7"}
+    refute verify
+  end
+
+  def test_it_does_include_valid_last_names
+    results = parse.customer_list
+    verify = results.one? {|customer|  customer.last_name == "Braun"}
+    assert verify
   end
 
 
