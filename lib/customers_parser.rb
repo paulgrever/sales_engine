@@ -1,4 +1,4 @@
-require './lib/customers'
+require './lib/customer'
 require 'pry'
 
 class CustomersParser
@@ -16,7 +16,7 @@ class CustomersParser
       last_name = customer[:last_name]
       created_at = customer[:created_at]
       updated_at = customer[:updated_at]
-      Customers.new(id, first_name, last_name, created_at, updated_at, parent_class)
+      Customer.new(id, first_name, last_name, created_at, updated_at, parent_class)
     end
   end
 end
