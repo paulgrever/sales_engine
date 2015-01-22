@@ -1,15 +1,12 @@
 
 class CustomerRepository
-  attr_reader :parent_class
+  attr_reader :parent_engine, :customer_list
 
-  def initialize(filename)
-    @customer_list = CustomersParser.new(filename, parent_class)
-    @parent_class = parent_class
+  def initialize(filename, parent_engine)
+    @customer_list = CustomersParser.new(filename, parent_class).customer_list
+    @parent_engine = parent_engine
   end
 
-  def init_parser(filename)
-    CustomersParser.new(filename, self)
-  end
 
 
 end
