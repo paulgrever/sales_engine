@@ -25,27 +25,27 @@ class InvoiceItemsTest < Minitest::Test
   end
 
   def test_it_takes_invoice_id
-    skip
+    #skip
     assert_equal "1", invoice_items.invoice_id
   end
 
   def test_it_takes_quantity
-    skip
+    #skip
     assert_equal "5", invoice_items.quantity
   end
 
   def test_it_takes_unit_price
-    skip
+    #skip
     assert_equal "13635", invoice_items.unit_price
   end
 
   def test_it_was_created_at_certain_Date
-    skip
+    #skip
     assert_equal "2012-03-27 14:54:09 UTC", invoice_items.created_at
   end
 
   def test_it_was_updated_at_certain_date
-    skip
+    #skip
     assert_equal "2012-03-27 14:54:09 UTC", invoice_items.updated_at
   end
 
