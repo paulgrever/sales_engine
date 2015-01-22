@@ -39,10 +39,4 @@ class CustomersParserTest < Minitest::Test
     assert verify
   end
 
-  def test_first_name_is_correct
-    results = parse.customer_list
-    assert "Joey", results[0].first_name
-  end
-
-
 end
