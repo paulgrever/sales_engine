@@ -21,6 +21,7 @@ end
 parent_class = "test"
 filename = "./data/customers.csv"
 test = CustomersParser.new(filename, parent_class)
-test.customer_file.each do |name|
-  puts name.first_name
-end
+# test.customer_file.each do |name|
+#   puts name.last_name
+# end
+puts test
