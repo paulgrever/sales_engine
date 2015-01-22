@@ -8,7 +8,7 @@ class CustomersTest < Minitest::Test
   attr_reader :customers
 
   def setup
-    @customers = Customers.new("1","Joey","Ondricka","2012-03-27 14:54:09 UTC","2012-03-27 14:54:09 UTC")
+    @customers = Customers.new("1","Joey","Ondricka","2012-03-27 14:54:09 UTC","2012-03-27 14:54:09 UTC", "parent")
   end
 
   def test_it_exists
