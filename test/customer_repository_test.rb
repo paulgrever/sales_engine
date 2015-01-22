@@ -18,8 +18,19 @@ class CustomerRepositoryTest < Minitest::Test
 
   def test_it_contains_all_customers_objects
     results = cust_repo.all
-    binding.pry
     assert 5, results.count
+  end
+
+  def test_it_contains_all_customer_objects
+    results = cust_repo.all
+    assert_equal "Joey", results.first.first_name
+    assert_equal "Nader", results.last.last_name
+    assert_equal "3", results[2].id
+  end
+
+  def test_it_refutes_data_not_in_CSV
+    results = cust_repo.all
+    refute results.include?('Paul')
   end
 
 end

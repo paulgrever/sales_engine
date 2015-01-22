@@ -22,6 +22,5 @@ end
 
 filename = "test/fixtures/customers_fixtures.csv"
 test = CustomerRepository.new(filename, "test")
-binding.pry
 
 test.all
