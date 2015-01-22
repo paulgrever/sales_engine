@@ -2,7 +2,6 @@ require './lib/customers'
 require 'pry'
 
 class CustomersParser
-  include Parser
   attr_reader :customer_list, :parent_class
 
   def initialize(filename, parent_class)
@@ -17,25 +16,25 @@ class CustomersParser
       last_name = customer[:last_name]
       created_at = customer[:created_at]
       updated_at = customer[:updated_at]
-      Customer.new(id, first_name, last_name, created_at, updated_at, parent_class)
+      Customers.new(id, first_name, last_name, created_at, updated_at, parent_class)
     end
   end
 end
 
-module Parser
+# module Parser
 
-  def parse(filename, class_name)
-    object_list_csv = CSV.open "#{filename}", headers: true, header_converters: :symbol
-    headers = object_list_csv.headers #=> [:id, :first_name, :last_name, :created_at, :updated_at]
-    object_array = object_list_csv.map do |obj|
-      arr = headers.map do |header|
-        obj[header]
-      end
-      class_name.new(arr)
-    end
-  end
+#   def parse(filename, class_name)
+#     object_list_csv = CSV.open "#{filename}", headers: true, header_converters: :symbol
+#     headers = object_list_csv.headers #=> [:id, :first_name, :last_name, :created_at, :updated_at]
+#     object_array = object_list_csv.map do |obj|
+#       arr = headers.map do |header|
+#         obj[header]
+#       end
+#       class_name.new(arr)
+#     end
+#   end
 
-end
+# end
 # parent_class = "test"
 # filename = "./data/customers.csv"
 # test = CustomersParser.new(filename, parent_class)
