@@ -1,5 +1,6 @@
 require './lib/items'
 require 'pry'
+require 'csv'
 
 class ItemsParser
   attr_reader :items_file, :parent_klass
@@ -18,12 +19,13 @@ class ItemsParser
       merchant_id = items[:merchant_id]
       created_at  = items[:created_at]
       updated_at  = items[:updated_at]
+
       Invoices.new(id,name,description, unit_price, merchant_id, created_at,updated_at)
     end
   end
 end
 
 parent_klass = "test"
-filename = "/test/fixtures/items_fixtures.csv"
+filename = "test/fixtures/items_fixtures.csv"
 test = ItemsParser.new(filename, parent_klass)
 puts test

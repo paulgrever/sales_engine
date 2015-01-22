@@ -1,5 +1,6 @@
 require './lib/transactions'
 require 'pry'
+require 'csv'
 
 class TransactionsParser
   attr_reader :transaction_file, :customer:arr, :parent_klass

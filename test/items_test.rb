@@ -8,7 +8,7 @@ class ItemsTest < Minitest::Test
   attr_reader :items
 
   def setup
-    @items = Items.new("1","Item Qui Esse","Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.","75107", "1", "2012-03-27 14:53:59 UTC","2012-03-27 14:53:59 UTC")
+    @items = Items.new("1","Item Qui Esse","Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.","75107", "1", "2012-03-27 14:53:59 UTC","2012-03-27 14:53:59 UTC", "parent")
   end
 
   def test_it_exists

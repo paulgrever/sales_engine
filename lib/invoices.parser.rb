@@ -1,5 +1,6 @@
 require './lib/invoices'
 require 'pry'
+require 'csv'
 
 class InvoicesParser
   attr_reader :invoices_file, :invoices_arr, :parent_klass
