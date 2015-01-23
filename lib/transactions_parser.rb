@@ -3,13 +3,13 @@ require 'pry'
 require 'csv'
 
 class TransactionsParser
-  attr_reader :transaction_file, :customer:arr, :parent_klass
+  attr_reader :transaction_file, :customer_arr, :parent_klass
 
   def initialize(filename, parent_klass)
-    @transaction_file = create.transaction(filename, parent_klass)
+    @transaction_file = create_transactions(filename, parent_klass)
   end
 
-  def create_transactions(file_name, parent_klass)
+  def create_transactions(filename, parent_klass)
     transactions = CSV.open "#{filename}", headers: true, header_converters: :symbol
     @transaction_arr = transactions.collect do |transaction|
       id = transaction[:id]

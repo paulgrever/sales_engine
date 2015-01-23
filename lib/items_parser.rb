@@ -11,7 +11,7 @@ class ItemsParser
 
   def create_items(filename, parent_klass)
     items = CSV.open "#{filename}", headers: true, header_converters: :symbol
-    @items_arr = items.collect do |items|
+    items_arr = items.collect do |items|
       id          = items[:id]
       name        = items[:name]
       description = items[:description]

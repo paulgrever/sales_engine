@@ -50,6 +50,6 @@ class ItemsParserTest < Minitest::Test
   def test_it_includes_valid_unit_prices
     skip
     results = parser.parse
-    verify = results.one? { |item| item.unit_price == "75107"}
+    verify = results.one? { |item| item.unit_price == 75107}
   end
 end

@@ -6,7 +6,7 @@ class InvoicesParser
   attr_reader :invoices_file, :invoices_arr, :parent_klass
 
   def initialize(filename, parent_klass)
-    @invoice_file = create_invoice(filename, parent_klass)
+    @invoice_file = create_invoices(filename, parent_klass)
   end
 
   def create_invoices(filename, parent_klass)
@@ -23,7 +23,7 @@ class InvoicesParser
   end
 end
 
-  parent_klass = "test"
-  filename = "./test/fixtures/invoices_fixtures.csv"
-  test = InvoicesParser.new(filename, parent_klass)
-  puts test
+  # parent_klass = "test"
+  # filename = "./test/fixtures/invoices_fixtures.csv"
+  # test = InvoicesParser.new(filename, parent_klass)
+  # puts test
