@@ -1,6 +1,6 @@
 
 class Invoices
-  attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at
+  attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at, :parent_klass
 
   def initialize(id, customer_id, merchant_id, status, created_at, updated_at, parent_klass)
     @id = id

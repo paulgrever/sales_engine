@@ -9,7 +9,7 @@ class TransactionsParserTest < Minitest::Test
 
   def setup
     filename = "test/fixtures/transactions_fixtures.csv"
-    @parser = ItemsParser.new(filename, "parent_class")
+    @parser = TransactionsParser.new(filename, "parent_class")
   end
 
   def test_it_exists
@@ -35,7 +35,7 @@ class TransactionsParserTest < Minitest::Test
 
   def test_it_accepts_only_valid_invoice_id
     results = parser.parse
-    verify = results.one? { |transaction| transaction.invoice_id == "2"}
+    verify = results.one? { |transaction|  transaction.invoice_id == "2"}
     assert verify
   end
 

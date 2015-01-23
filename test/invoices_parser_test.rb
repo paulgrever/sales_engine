@@ -9,7 +9,7 @@ class InvoicesParserTest < Minitest::Test
 
   def setup
     filename = "test/fixtures/invoices_fixtures.csv"
-    @parser = InvoicesParser.new(filename, "parent_lass")
+    @parser = InvoicesParser.new(filename, "parent_klass")
   end
 
   def test_it_exists

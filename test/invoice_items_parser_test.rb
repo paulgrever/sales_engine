@@ -13,7 +13,7 @@ class InvoiceItemsParserTest < Minitest::Test
   end
 
   def test_it_exists
-    assert InvoiceItems
+    assert InvoiceItemsParser
   end
 
   def test_it_creates_array_of_five_invoice_items

@@ -7,7 +7,7 @@ class InvoiceItemsTest < Minitest::Test
   attr_reader :invoice_items
 
   def setup
-    @invoice_items = InvoiceItems.new("1","539","1","5","13635","2012-03-27 14:54:09 UTC", "2012-03-27 14:54:09 UTC")
+    @invoice_items = InvoiceItems.new("1","539","1","5","13635","2012-03-27 14:54:09 UTC", "2012-03-27 14:54:09 UTC", "parent_klass")
   end
 
   def test_it_exists

@@ -8,7 +8,7 @@ class TransactionsTest < Minitest::Test
   attr_reader :transactions
 
   def setup
-    @transactions = Transactions.new("1","1", "654405418249632", nil,"success","2012-03-27 14:54:09 UTC","2012-03-27 14:54:09 UTC")
+    @transactions = Transactions.new("1","1", "654405418249632", nil,"success","2012-03-27 14:54:09 UTC","2012-03-27 14:54:09 UTC", "parent_klass")
   end
 
   def test_it_exists
