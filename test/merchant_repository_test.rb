@@ -5,70 +5,98 @@ require 'csv'
 require 'pry'
 
 class MerchantRepositoryTest < Minitest::Test
-  attr_reader :merchant_repository, :merchant_repo
-
-  def setup
-    @merchant_repo = MerchantRepository.new
-    @merchant_repository = merchant_repo.create_merchants
+  attr_reader :merch_repo
+  def setup 
+    filename = "test/fixtures/merchants_fixtures.csv"
+    
+    parent_engine = "parent"
+    @merch_repo = MerchantRepository.new(filename, parent_engine)
   end
 
   def test_it_exists
     assert MerchantRepository
   end
 
-  def test_it_creates_an_object_for_each_merchant
-    #there are 100 merchants in data file
-    assert_equal 100, merchant_repository.size
+  def test_it_contains_all_merchants_objects
+    results = merch_repo.all
+    assert 6, results.count
   end
 
-  #first data set is id = 1 name = Schroeder-Jerde
-  #created = 2012-03-27 14:53:59 UTC updated = 2012-03-27 14:53:59 UTC
+  def test_it_contains_all_merchant_objects
+    results = merch_repo.all
+    assert_equal "Schroeder-Jerde", results.first.name
+    assert_equal "3", results[2].id
+  end
 
-  def test_it_pulls_correct_data_from_merchant_1
-    results = merchant_repository[0]
-    assert_equal "1" , results.id
+  def test_it_refutes_data_not_in_CSV
+    results = merch_repo.all
+    refute results.include?('Paul')
+  end
+
+  def test_random_doesnt_repeate_itself_most_of_the_time
+    results = merch_repo.random
+    results2 = merch_repo.random
+    assert_equal false, results == results2
+  end
+
+
+  def test_it_can_find_by_name
+    input_name = "Schroeder-Jerde"
+    results = merch_repo.find_by_name(input_name)
     assert_equal "Schroeder-Jerde", results.name
+  end
+
+  def test_it_can_find_by_name_then_display_other_attributes_associated_with_first_name
+    input_name = "Schroeder-Jerde"
+    results = merch_repo.find_by_name(input_name)
+    assert_equal "1", results.id
     assert_equal "2012-03-27 14:53:59 UTC", results.created_at
-    assert_equal "2012-03-27 14:53:59 UTC", results.updated_at
   end
 
-  def test_it_pulls_correct_data_from_merchant_15
-    results = merchant_repository[14]
-    assert_equal "15" , results.id
-    assert_equal "Adams-Kovacek", results.name
-    assert_equal "2012-03-27 14:54:00 UTC", results.created_at
-    assert_equal "2012-03-27 14:54:00 UTC", results.updated_at
+  def test_it_can_find_a_differnt_customer_by_first_name
+    input_name = "Cummings-Thiel"
+    results = merch_repo.find_by_name(input_name)
+    assert_equal "Cummings-Thiel", results.name
+    assert_equal "4", results.id
   end
 
-  def test_it_can_display_all_merchants
-    results = merchant_repo.all
-    assert_equal 100, results.size
+  def test_it_can_locate_a_customer_by_id
+    input_id = "5"
+    results = merch_repo.find_by_id(input_id)
+    assert_equal "Williamson Group", results.name
   end
 
-  def test_it_includes_merchants_names
-    results = merchant_repo.all
-    results.include?("Zemlak")
-    assert results
+  def test_it_can_locate_a_differnt_customer_by_id
+    input_id = "4"
+    results = merch_repo.find_by_id(input_id)
+    assert_equal "Cummings-Thiel", results.name
   end
 
-  def test_it_includes_merchants_creates_times
-    results = merchant_repo.all
-    results.include?("2012-03-27 14:54:08 UTC")
-    assert results
+  def test_it_can_find_all_merchants_by_name
+    input_name = "Cummings-Thiel"
+    results = merch_repo.find_all_by_name(input_name)
+    assert_equal 1, results.count
   end
 
-  def test_it_creates_a_readable_out_put_with_all_valid_info
-    results = merchant_repo.all
-    results.include?("ID:85, Name:Sauer and Sons, Created Date:2012-03-27 14:54:07 UTC, Last Updated: 2012-03-27 14:54:07 UTC")
-    assert results
+  def test_it_can_find_all_merchants_by_name
+    input_name = "Williamson Group"
+    results = merch_repo.find_all_by_name(input_name)
+    assert_equal 2, results.count
   end
 
-  def test_it_selects_a_random_merchant
-    skip
-    results1 = merchant_repo.random
-    results2 = merchant_repo.random
-    verify = results1 == results2
-    binding.pry
-    refute verify
+
+  def test_it_can_find_all_merchants_by_id
+    input_id = "6"
+    results = merch_repo.find_all_by_id(input_id)
+    assert_equal 1, results.count
   end
+
+  def test_it_doesnt_find_all_if_it_dont_exist
+    input_id = "10"
+    results = merch_repo.find_all_by_id(input_id)
+    assert_equal 0, results.count
+  end
+
+
+   
 end

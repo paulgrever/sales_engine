@@ -1,13 +1,14 @@
 require 'csv'
 
-class Merchants
-  attr_reader :id, :name, :created_at, :updated_at
+class Merchant
+  attr_reader :id, :name, :created_at, :updated_at, :parent_class
 
-  def initialize(id, name, created_at, updated_at)
+  def initialize(id, name, created_at, updated_at, parent_class)
     @id = id
     @name = name
     @created_at = created_at
     @updated_at = updated_at
+    @parent_class = parent_class
   end
 end
 
