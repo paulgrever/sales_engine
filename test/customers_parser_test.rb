@@ -39,4 +39,9 @@ class CustomersParserTest < Minitest::Test
     assert verify
   end
 
+  def test_it_accepts_only_valid_first_names
+    results = parser.parse
+    verify = results.one? { |customer| customer.first_name == "Joey"}
+    assert verify
+  end
 end

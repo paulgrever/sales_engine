@@ -3,10 +3,10 @@ require 'pry'
 require 'csv'
 
 class ItemsParser
-  attr_reader :items_file, :parent_klass
+  attr_reader :parse, :parent_klass
 
   def initialize(filename, parent_klass)
-    @items_file = create_items(filename, parent_klass)
+    @parse = create_items(filename, parent_klass)
   end
 
   def create_items(filename, parent_klass)
@@ -25,7 +25,7 @@ class ItemsParser
   end
 end
 
-parent_klass = "test"
-filename = "test/fixtures/items_fixtures.csv"
-test = ItemsParser.new(filename, parent_klass)
-puts test
+# parent_klass = "test"
+# filename = "test/fixtures/items_fixtures.csv"
+# test = ItemsParser.new(filename, parent_klass)
+# puts test

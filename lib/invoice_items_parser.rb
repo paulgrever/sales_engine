@@ -26,5 +26,4 @@ class InvoiceItemsParser
   parent_klass = "test"
   filename ="./test/fixtures/invoice_items_fixtures.csv"
   test = InvoiceItemsParser.new(filename, parent_klass)
-
   puts test
