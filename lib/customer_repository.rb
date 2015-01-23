@@ -24,20 +24,25 @@ class CustomerRepository
     customers.find {|customer| customer.last_name == input_name }
   end
 
-  def find_by_customer_id(input_id)
+  def find_by_id(input_id)
     customers.find {|customer| customer.id == input_id }
   end
 
+  def find_all_by_first_name(input_name)
+    customers.find_all {|customer| customer.first_name == input_name }
+  end
+
+  def find_all_by_last_name(input_name)
+    customers.find_all {|customer| customer.last_name == input_name }
+  end
+
+  def find_all_by_id(input_id)
+    customers.find_all {|customer| customer.id == input_id }
+  end
 
   def customers
     all_customer_list.parse
   end
-
-
-
-
-
-
 
 end
 
