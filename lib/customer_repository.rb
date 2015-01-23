@@ -9,19 +9,42 @@ class CustomerRepository
   end
 
   def all
-    all_customer_list.parse
+    customers
   end
 
   def random
-    all_customer_list.parse.sample
+    customers.sample
   end
+
+  def find_by_first_name(input_name)
+    customers.find {|customer| customer.first_name == input_name }
+  end
+
+  def find_by_last_name(input_name)
+    customers.find {|customer| customer.last_name == input_name }
+  end
+
+  def find_by_customer_id(input_id)
+    customers.find {|customer| customer.id == input_id }
+  end
+
+
+  def customers
+    all_customer_list.parse
+  end
+
+
+
+
 
 
 
 end
 
-filename = "test/fixtures/customers_fixtures.csv"
-test = CustomerRepository.new(filename, "test")
+# filename = "test/fixtures/customers_fixtures.csv"
+# test = CustomerRepository.new(filename, "test")
+# custom = test.customers
 
-p test.random
-p test.random
+
+# binding.pry
+# p custom

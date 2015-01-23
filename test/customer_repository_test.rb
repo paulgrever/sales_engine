@@ -46,6 +46,53 @@ class CustomerRepositoryTest < Minitest::Test
     assert verify
   end
 
+  def test_it_can_find_by_first_name
+    input_name = "Joey"
+    results = cust_repo.find_by_first_name(input_name)
+    assert_equal "Joey", results.first_name
+  end
+
+  def test_it_can_find_by_first_name_then_display_other_attributes_associated_with_first_name
+    input_name = "Joey"
+    results = cust_repo.find_by_first_name(input_name)
+    assert_equal "1", results.id
+    assert_equal "Ondricka", results.last_name
+  end
+
+  def test_it_can_find_a_differnt_customer_by_first_name
+    input_name = "Leanne"
+    results = cust_repo.find_by_first_name(input_name)
+    assert_equal "Leanne", results.first_name
+    assert_equal "4", results.id
+  end
+
+  def test_it_does_not_display_info_from_a_different_customer
+    input_name = "Joey"
+    results = cust_repo.find_by_first_name(input_name)
+    refute_equal "Leanne", results.first_name
+    refute_equal "4", results.id
+  end
+
+  def test_it_can_find_by_last_name
+    input_name = "Ondricka"
+    results = cust_repo.find_by_last_name(input_name)
+    assert_equal "Ondricka", results.last_name
+  end
+
+  def test_it_can_find_by_last_name_then_display_other_attributes_associated_with_last_name
+    input_name = "Ondricka"
+    results = cust_repo.find_by_last_name(input_name)
+    assert_equal "1", results.id
+    assert_equal "Joey", results.first_name
+  end
+
+  def test_it_can_find_a_differnt_customer_by_last_name
+    input_name = "Braun"
+    results = cust_repo.find_by_last_name(input_name)
+    assert_equal "Braun", results.last_name
+    assert_equal "4", results.id
+  end
 
 
+    
 end
