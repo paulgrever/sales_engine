@@ -17,8 +17,8 @@ class InvoiceItemsParser
         invoice_id = invoice_item[:invoice_id]
         quantity   = invoice_item[:quantity]
         unit_price = invoice_item[:unit_price]
-        created_at = invoice_items[:created_at]
-        updated_at = invoice_items[:updated_at]
+        created_at = invoice_item[:created_at]
+        updated_at = invoice_item[:updated_at]
         InvoiceItems.new(id, item_id, invoice_id, quantity, unit_price, created_at, updated_at, parent_klass)
       end
     end
