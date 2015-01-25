@@ -24,8 +24,3 @@ class ItemsParser
     end
   end
 end
-
-# parent_klass = "test"
-# filename = "test/fixtures/items_fixtures.csv"
-# test = ItemsParser.new(filename, parent_klass)
-# puts test
