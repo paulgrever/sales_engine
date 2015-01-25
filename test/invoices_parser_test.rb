@@ -18,7 +18,7 @@ class InvoicesParserTest < Minitest::Test
 
   def test_it_creates_array_having_five_invoices
     results = parser.parse
-    assert_equal 5, results.count
+    assert_equal 7, results.count
   end
 
   def test_it_includes_valid_unique_id_number
