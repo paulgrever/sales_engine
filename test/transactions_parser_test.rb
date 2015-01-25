@@ -18,7 +18,7 @@ class TransactionsParserTest < Minitest::Test
 
   def test_it_creates_array_of_five_examples
     results = parser.parse
-    assert_equal 5, results.count
+    assert_equal 6, results.count
   end
 
   def test_it_includes_valid_unique_id_num
@@ -29,7 +29,7 @@ class TransactionsParserTest < Minitest::Test
 
   def test_it_does_not_include_invalid_num
     results = parser.parse
-    verify = results.one? { |transaction| transaction.id == "14"}
+    verify = results.one? { |transaction| transaction.id == "17"}
     refute verify
   end
 

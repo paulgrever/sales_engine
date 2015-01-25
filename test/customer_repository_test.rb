@@ -18,7 +18,7 @@ class CustomerRepositoryTest < Minitest::Test
 
   def test_it_exists
     assert CustomerRepository
-  end
+  end 
 
   def test_it_contains_all_customers_objects
     results = cust_repo.all
