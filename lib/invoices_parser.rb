@@ -1,4 +1,4 @@
-require './lib/invoices'
+require_relative 'invoices'
 require 'pry'
 require 'csv'
 
@@ -12,9 +12,9 @@ class InvoicesParser
   def create_invoices(filename, parent_klass)
     invoices = CSV.open "#{filename}", headers: true, header_converters: :symbol
     invoices_arr = invoices.collect do |invoice|
-      id          = invoice[:id]
-      customer_id = invoice[:customer_id]
-      merchant_id = invoice[:merchant_id]
+      id          = invoice[:id].to_i
+      customer_id = invoice[:customer_id].to_i
+      merchant_id = invoice[:merchant_id].to_i
       status      = invoice[:status]
       created_at  = invoice[:created_at]
       updated_at  = invoice[:updated_at]
@@ -24,6 +24,6 @@ class InvoicesParser
 end
 
   # parent_klass = "test"
-  # filename = "./test/fixtures/invoices_fixtures.csv"
+  # filename = "./test/fixtures/invoices.csv"
   # test = InvoicesParser.new(filename, parent_klass)
   # puts test

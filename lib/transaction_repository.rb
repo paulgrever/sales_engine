@@ -7,6 +7,10 @@ class TransactionRepository
     @all_transaction_list = TransactionsParser.new(filename, parent_engine)
     @parent_engine = parent_engine
   end
+  
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
+  end
 
   def transactions
     all_transaction_list.parse
@@ -65,8 +69,8 @@ class TransactionRepository
     transactions.find_all {|transaction| transaction.updated_at == input_updated_date}
   end
 
-  def find_all_by_results(input_results)
-    transactions.find_all {|transaction| transaction.result == input_results}
+  def find_all_by_result(input_result)
+    transactions.find_all {|transaction| transaction.result == input_result}
   end
 end
 

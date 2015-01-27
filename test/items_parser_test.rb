@@ -3,12 +3,13 @@ require 'minitest/pride'
 require_relative '../lib/items_parser'
 require 'csv'
 require 'pry'
+require 'bigdecimal'
 
 class ItemsParserTest < Minitest::Test
   attr_reader :parser
 
   def setup
-    filename = "test/fixtures/items_fixtures.csv"
+    filename = "test/fixtures/items.csv"
     @parser = ItemsParser.new(filename, "parent_class")
   end
 
@@ -30,13 +31,13 @@ class ItemsParserTest < Minitest::Test
 
   def test_it_includes_valid_id
     results = parser.parse
-    verify = results.one? { |item| item.id == "1"}
+    verify = results.one? { |item| item.id == 1}
     assert verify
   end
 
   def test_it_does_not_include_valid_id_numbers
     results = parser.parse
-    verify = results.one? { |item| item.id == "9"}
+    verify = results.one? { |item| item.id == 9}
     refute verify
   end
 
@@ -50,6 +51,6 @@ class ItemsParserTest < Minitest::Test
   def test_it_includes_valid_unit_prices
     skip
     results = parser.parse
-    verify = results.one? { |item| item.unit_price == "75107"}
+    verify = results.one? { |item| item.unit_price == BigDecimal.new(75107)/100}
   end
 end

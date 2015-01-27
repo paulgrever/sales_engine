@@ -8,6 +8,10 @@ class InvoiceRepository
     @parent_engine = parent_engine
   end
 
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
+  end
+
   def invoices
     all_invoice_list.parse
   end

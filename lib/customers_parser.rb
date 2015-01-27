@@ -1,4 +1,4 @@
-require './lib/customer'
+require_relative 'customer'
 require 'pry'
 require 'csv'
 
@@ -12,7 +12,7 @@ class CustomersParser
   def create_customers(filename, parent_class)
     customers = CSV.open "#{filename}", headers: true, header_converters: :symbol
     customer_array = customers.map do |customer|
-      id = customer[:id]
+      id = customer[:id].to_i
       first_name = customer[:first_name]
       last_name = customer[:last_name]
       created_at = customer[:created_at]

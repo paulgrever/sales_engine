@@ -1,4 +1,4 @@
-require './lib/merchant'
+require_relative 'merchant'
 require 'pry'
 require 'csv'
 class MerchantsParser
@@ -11,7 +11,7 @@ class MerchantsParser
   def create_merchants(filename, parent_class)
     merchants = CSV.open "#{filename}", headers: true, header_converters: :symbol
     merchant_list = merchants.map do |merchant|
-      id = merchant[:id]
+      id = merchant[:id].to_i
       name = merchant[:name]
       created_at = merchant[:created_at]
       updated_at = merchant[:updated_at]

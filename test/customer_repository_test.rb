@@ -7,9 +7,9 @@ require 'pry'
 class CustomerRepositoryTest < Minitest::Test
   attr_reader :cust_repo, :cust_repo_double
   def setup 
-    filename = "test/fixtures/customers_fixtures.csv"
+    filename = "test/fixtures/customers.csv"
     #uniq data
-    filename2 = "test/fixtures/double_customers_fixtures.csv"
+    filename2 = "test/fixtures/double_customers.csv"
     #data with double first names
     parent_engine = "parent"
     @cust_repo = CustomerRepository.new(filename, parent_engine)
@@ -29,7 +29,7 @@ class CustomerRepositoryTest < Minitest::Test
     results = cust_repo.all
     assert_equal "Joey", results.first.first_name
     assert_equal "Nader", results.last.last_name
-    assert_equal "3", results[2].id
+    assert_equal 3, results[2].id
   end
 
   def test_it_refutes_data_not_in_CSV
@@ -59,7 +59,7 @@ class CustomerRepositoryTest < Minitest::Test
   def test_it_can_find_by_first_name_then_display_other_attributes_associated_with_first_name
     input_name = "Joey"
     results = cust_repo.find_by_first_name(input_name)
-    assert_equal "1", results.id
+    assert_equal 1, results.id
     assert_equal "Ondricka", results.last_name
   end
 
@@ -67,14 +67,14 @@ class CustomerRepositoryTest < Minitest::Test
     input_name = "Leanne"
     results = cust_repo.find_by_first_name(input_name)
     assert_equal "Leanne", results.first_name
-    assert_equal "4", results.id
+    assert_equal 4, results.id
   end
 
   def test_it_does_not_display_info_from_a_different_customer
     input_name = "Joey"
     results = cust_repo.find_by_first_name(input_name)
     refute_equal "Leanne", results.first_name
-    refute_equal "4", results.id
+    refute_equal 4, results.id
   end
 
   def test_it_can_find_by_last_name
@@ -86,7 +86,7 @@ class CustomerRepositoryTest < Minitest::Test
   def test_it_can_find_by_last_name_then_display_other_attributes_associated_with_last_name
     input_name = "Ondricka"
     results = cust_repo.find_by_last_name(input_name)
-    assert_equal "1", results.id
+    assert_equal 1, results.id
     assert_equal "Joey", results.first_name
   end
 
@@ -94,17 +94,17 @@ class CustomerRepositoryTest < Minitest::Test
     input_name = "Braun"
     results = cust_repo_double.find_by_last_name(input_name)
     assert_equal "Braun", results.last_name
-    assert_equal "4", results.id
+    assert_equal 4, results.id
   end
 
   def test_it_can_locate_a_customer_by_id
-    input_id = "5"
+    input_id = 5
     results = cust_repo.find_by_id(input_id)
     assert_equal "Sylvester", results.first_name
   end
 
   def test_it_can_locate_a_differnt_customer_by_id
-    input_id = "4"
+    input_id = 4
     results = cust_repo.find_by_id(input_id)
     assert_equal "Braun", results.last_name
   end
@@ -128,13 +128,13 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_customers_by_id
-    input_id = "6"
+    input_id = 6
     results = cust_repo_double.find_all_by_id(input_id)
     assert_equal 1, results.count
   end
 
   def test_it_doesnt_find_all_if_it_dont_exist
-    input_id = "10"
+    input_id = 10
     results = cust_repo_double.find_all_by_id(input_id)
     assert_equal 0, results.count
   end

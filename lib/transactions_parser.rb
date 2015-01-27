@@ -1,4 +1,4 @@
-require './lib/transactions'
+require_relative 'transactions'
 require 'pry'
 require 'csv'
 
@@ -12,9 +12,9 @@ class TransactionsParser
   def create_transactions(filename, parent_klass)
     transactions = CSV.open "#{filename}", headers: true, header_converters: :symbol
     transaction_arr = transactions.map do |transaction|
-      id = transaction[:id]
-      invoice_id = transaction[:invoice_id]
-      credit_card_number = transaction[:credit_card_number]
+      id = transaction[:id].to_i
+      invoice_id = transaction[:invoice_id].to_i
+      credit_card_number = transaction[:credit_card_number].to_i
       credit_card_expiration_date = transaction[:credit_card_expiration_date]
       result = transaction[:result]
       created_at = transaction[:created_at]
@@ -24,7 +24,7 @@ class TransactionsParser
   end
 end
   # parent_klass = "test"
-  # filename = "./test/fixtures/transactions_fixtures.csv"
+  # filename = "./test/fixtures/transactions.csv"
   # test =TransactionsParser.new(filename, parent_klass)
   # puts test
 

@@ -7,7 +7,7 @@ class InvoiceItemsTest < Minitest::Test
   attr_reader :invoice_items
 
   def setup
-    @invoice_items = InvoiceItems.new("1","539","1","5","13635","2012-03-27 14:54:09 UTC", "2012-03-27 14:54:09 UTC", "parent_klass")
+    @invoice_items = InvoiceItems.new(1,"539","1","5","13635","2012-03-27 14:54:09 UTC", "2012-03-27 14:54:09 UTC", "parent_klass")
   end
 
   def test_it_exists
@@ -15,8 +15,7 @@ class InvoiceItemsTest < Minitest::Test
   end
 
   def test_it_takes_id
-    #skip
-    assert_equal "1", invoice_items.id
+    assert_equal 1, invoice_items.id
   end
 
   def test_it_takes_item_id
@@ -35,8 +34,8 @@ class InvoiceItemsTest < Minitest::Test
   end
 
   def test_it_takes_unit_price
-    #skip
-    assert_equal "13635", invoice_items.unit_price
+    results = invoice_items.unit_price
+    assert_equal 13635, results.to_i
   end
 
   def test_it_was_created_at_certain_Date

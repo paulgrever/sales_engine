@@ -8,6 +8,10 @@ class CustomerRepository
     @parent_engine = parent_engine
   end
 
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
+  end
+
   def all
     customers
   end
@@ -46,7 +50,7 @@ class CustomerRepository
 
 end
 
-# filename = "test/fixtures/customers_fixtures.csv"
+# filename = "test/fixtures/customers.csv"
 # test = CustomerRepository.new(filename, "test")
 # custom = test.customers
 

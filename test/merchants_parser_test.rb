@@ -8,7 +8,7 @@ class MerchantsParserTest < Minitest::Test
   attr_reader :parser
 
   def setup
-    filename = "test/fixtures/merchants_fixtures.csv"
+    filename = "test/fixtures/merchants.csv"
     @parser = MerchantsParser.new(filename, "parent_class")
   end
 
@@ -23,13 +23,13 @@ class MerchantsParserTest < Minitest::Test
 
   def test_it_includes_valid_unique_id_numbers
     results = parser.parse
-    verify = results.one? {|merchant| merchant.id == "3"}
+    verify = results.one? {|merchant| merchant.id == 3}
     assert verify
   end
 
   def test_it_does_not_include_valid_numbers
     results = parser.parse
-    verify = results.one? {|merchant| merchant.id == "7"}
+    verify = results.one? {|merchant| merchant.id == 7}
     refute verify
   end
 

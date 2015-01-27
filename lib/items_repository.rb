@@ -1,5 +1,5 @@
 require 'csv'
-require './lib/items_parser'
+require_relative 'items_parser'
 require 'pry'
 
 # id,name,description,unit_price,merchant_id,created_at,updated_at
@@ -11,6 +11,10 @@ class ItemsRepository
     def initialize(filename, parent_engine)
       @all_items_list = ItemsParser.new(filename, parent_engine)
       @parent_engine = parent_engine
+    end
+
+    def inspect
+      "#<#{self.class} #{@merchants.size} rows>"
     end
 
     def items
@@ -58,7 +62,7 @@ class ItemsRepository
     end
 
     def find_all_by_name(input_name)
-      items.find_all { |item| item.name == input_name}
+      items.find_all { |item| item.name.downcase == input_name.downcase}
     end
 
     def find_all_by_description(input_description)
@@ -81,3 +85,7 @@ class ItemsRepository
       items.find_all { |item| item.updated_at == input_updated_date}
     end
 end
+
+
+
+
