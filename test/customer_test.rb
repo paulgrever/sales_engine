@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/customer'
+require_relative '../lib/sales_engine'
 require 'csv'
 
 
@@ -35,5 +36,7 @@ class CustomerTest < Minitest::Test
     assert_equal "2012-03-27 14:54:09 UTC", customers.updated_at
   end
 
-
 end
+
+
+
