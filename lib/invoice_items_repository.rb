@@ -88,5 +88,9 @@ class InvoiceItemsRepository
   def item(input_item_id)
     parent_engine.item_repository.find_by_id(input_item_id)
   end
+
+  def all_items(input_item_id)
+    parent_engine.item_repository.find_all_by_id(input_item_id)
+  end
 end
 

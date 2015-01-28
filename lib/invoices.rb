@@ -21,11 +21,17 @@ class Invoices
   end
 
   def customer
-    parent_engine.customer_repository.find_by_id(@id)
+    parent_engine.customer_repository.find_by_id(@customer_id)
   end
 
   def merchant
     parent_engine.merchant_repository.find_by_id(@merchant_id)
+  end
+
+  def items
+    invoices = parent_engine.invoice_item_repository.find_all_by_invoice_id(@id)
+    item_by_id = invoices.map(&:item_id)
+    items_by_it = item_by_id.map{|id_of_item| parent_engine.item_repository.find_all_by_id(id_of_item)}
   end
 
 end
