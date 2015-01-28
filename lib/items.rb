@@ -20,7 +20,7 @@ class Items
     end
 
   def merchant
-    parent_engine.merchant_repository.find_by_id(@id)
+    parent_engine.merchant_repository.find_by_id(@merchant_id)
   end
 end
 
