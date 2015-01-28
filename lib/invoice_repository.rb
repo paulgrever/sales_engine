@@ -88,7 +88,9 @@ class InvoiceRepository
     parent_engine.merchant_repository.find_by_id(input_merch_id)
   end
 
-
+  def successful_transaction
+    parent_engine.transaction_repository.find_all_by_result("success")
+  end
 
 
 

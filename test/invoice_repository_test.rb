@@ -90,6 +90,11 @@ def test_it_finds_a_customer_by_invoice_id
   assert_equal "Klein, Rempel and Jones", results.name
 end
 
+def test_it_counts_successful_transactions
+  results = invoice_repo.successful_transaction
+  assert_equal 5, results.count
+end
+
 
 
 

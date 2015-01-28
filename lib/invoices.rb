@@ -34,4 +34,8 @@ class Invoices
     items_by_it = item_by_id.map{|id_of_item| parent_engine.item_repository.find_by_id(id_of_item)}
   end
 
+  def successful_transactions
+    parent_engine.transaction_repository.find_all_by_result("success")
+  end
+
 end

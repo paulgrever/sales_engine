@@ -15,6 +15,22 @@ class Customer
     parent_engine.invoice_repository.find_all_by_customer_id(@id)
   end
 
+  def transactions
+    invoices.map do |invoice_id|
+      parent_engine.transaction_repository.find_all_by_invoice_id(invoice_id)
+    end
+  end
+
+
+  def favorite_merchant
+    invoices
+    transactions
+    binding.pry
+  end
+  #   successful = parent_engine.invoice_repository.successful_transactions
+  #   successful.max_by
+  # end
+
 end
 
 

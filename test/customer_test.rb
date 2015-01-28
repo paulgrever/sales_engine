@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/customer'
 require_relative '../lib/sales_engine'
+require_relative '../lib/customers_parser'
 require 'csv'
 
 
@@ -34,6 +35,30 @@ class CustomerTest < Minitest::Test
 
   def test_it_was_updated_at_certain_date
     assert_equal "2012-03-27 14:54:09 UTC", customers.updated_at
+  end
+
+
+
+end
+
+
+
+class CustomerIntegrationTest < Minitest::Test
+  attr_reader :customers, :customer
+  attr_accessor :parent_engine
+
+  def setup
+  @parent_engine = SalesEngine.new
+   filename = "test/fixtures/customers.csv"
+    customer = CustomerRepository.new(filename, parent_engine)
+    @customers = customer
+  end
+
+  def test_it_counts_successes_by_merchant
+    input = 1
+    results = customers.invoices(input)
+
+
   end
 
 end

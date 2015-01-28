@@ -76,6 +76,10 @@ class TransactionRepository
   def invoice(input_invoice_id)
     parent_engine.invoice_repository.find_by_id(input_invoice_id)
   end
+
+  def successful?
+    transactions.result == "success"
+  end
 end
 # filename = "./data/transactions.csv"
 # test = TransactionRepository.new(filename, "parent")
