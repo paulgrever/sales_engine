@@ -35,7 +35,7 @@ class InvoiceItemsTest < Minitest::Test
 
   def test_it_takes_unit_price
     results = invoice_items.unit_price
-    assert_equal 13635, results.to_i
+    assert_equal 136.35, results.to_f
   end
 
   def test_it_was_created_at_certain_Date

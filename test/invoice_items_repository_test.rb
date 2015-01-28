@@ -44,7 +44,7 @@ class InvoiceItemsRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_unit_price
-    results = ii_repo.find_by_unit_price(13635)
+    results = ii_repo.find_by_unit_price(136.35)
     assert_equal 539, results.item_id
   end
 
@@ -74,7 +74,7 @@ class InvoiceItemsRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_unit_price
-    results = ii_repo.find_all_by_unit_price(23324)
+    results = ii_repo.find_all_by_unit_price(233.24)
     assert_equal 2, results.count
   end
 

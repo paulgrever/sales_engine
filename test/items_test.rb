@@ -33,7 +33,7 @@ class ItemsTest < Minitest::Test
 
   def test_it_takes_unit_price
     results = items.unit_price
-    assert_equal 75107, results
+    assert_equal 751.07, results.to_f
   end
 
   def test_it_takes_merchant_id

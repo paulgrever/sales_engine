@@ -16,7 +16,7 @@ class ItemsParser
       id          = item[:id].to_i
       name        = item[:name]
       description = item[:description]
-      unit_price  = price_converter(item[:unit_price])
+      unit_price  = item[:unit_price]
       merchant_id = item[:merchant_id].to_i
       created_at  = item[:created_at]
       updated_at  = item[:updated_at]

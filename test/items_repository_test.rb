@@ -41,19 +41,19 @@ class ItemsRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_by_unit_price
-    results = items_repo.find_by_unit_price(BigDecimal.new("32301"))
+    results = items_repo.find_by_unit_price(323.01)
     assert_equal 3, results.id
   end
 
   def test_it_can_find_by_merchant_id
     results = items_repo.find_by_merchant_id(1)
     results2 = results.unit_price
-    assert_equal BigDecimal.new("75107"), results2
+    assert_equal 751.07, results2.to_f
   end
 
   def test_it_can_find_by_created_at
     results = items_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
-    assert_equal BigDecimal.new("75107"), results.unit_price
+    assert_equal 751.07, results.unit_price.to_f
   end
 
   def test_it_can_find_all_merchant_id

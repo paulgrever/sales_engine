@@ -7,7 +7,7 @@ class Items
     @id = id
     @name = name
     @description = description
-    @unit_price = BigDecimal.new(unit_price)
+    @unit_price = BigDecimal.new(unit_price)/100
     @merchant_id = merchant_id
     @created_at = created_at
     @updated_at = updated_at

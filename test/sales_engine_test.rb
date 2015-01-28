@@ -37,7 +37,7 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_it_can_find_items
-    results = setup.item_repository.find_by_unit_price(67076)
+    results = setup.item_repository.find_by_unit_price(670.76)
     assert_equal 2, results.id
   end
 
