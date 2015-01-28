@@ -1,9 +1,10 @@
 require 'bigdecimal'
+require_relative 'sales_engine'
 class Items
   attr_reader :id, :name, :description, :unit_price,
               :merchant_id,:created_at, :updated_at,
-              :parent_klass
-  def initialize(id, name, description, unit_price, merchant_id, created_at, updated_at, parent_klass)
+              :parent_engine
+  def initialize(id, name, description, unit_price, merchant_id, created_at, updated_at, parent_engine)
     @id = id
     @name = name
     @description = description
@@ -11,10 +12,16 @@ class Items
     @merchant_id = merchant_id
     @created_at = created_at
     @updated_at = updated_at
-    @parent_klass = parent_klass
+    @parent_engine = parent_engine
   end
 
+  def invoice_items
+      parent_engine.invoice_item_repository.find_all_by_item_id(@id)
+    end
 
+  def merchant
+    parent_engine.merchant_repository.find_by_id(@id)
+  end
 end
 
 # id,name,description,unit_price,merchant_id,created_at,updated_at

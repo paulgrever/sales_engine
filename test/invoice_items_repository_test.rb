@@ -30,7 +30,6 @@ class InvoiceItemsRepositoryTest < Minitest::Test
 
   def test_it_can_find_by_an_item_id
     results = ii_repo.find_by_item_id(535)
-    binding.pry
     assert_equal 4, results.id
   end
 

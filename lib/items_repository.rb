@@ -35,7 +35,7 @@ class ItemsRepository
     end
 
     def find_by_name(input_name)
-      items.find { |item| item.name == input_name}
+      items.find { |item| item.name.downcase == input_name.downcase}
     end
 
     def find_by_description(input_description)
