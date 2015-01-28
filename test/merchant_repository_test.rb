@@ -10,7 +10,7 @@ class MerchantRepositoryTest < Minitest::Test
   def setup 
     filename = "test/fixtures/merchants.csv"
     
-    parent_engine = "parent"
+    parent_engine = SalesEngine.new
     @merch_repo = MerchantRepository.new(filename, parent_engine)
   end
 
@@ -99,11 +99,37 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_items_by_merch_id
-    skip
-    merch_id = "1"
+    merch_id = 1
     results = merch_repo.items(merch_id)
     assert_equal 5, results.count
   end
+
+  def test_it_find_all_items_by_merch_id
+    skip
+    filename = "./data/merchants.csv"
+    parent_engine = SalesEngine.new
+    merch = MerchantRepository.new(filename, parent_engine)
+    id = 76
+    results = merch.items(id)
+    assert_equal 33, results.count
+  end
+
+  def test_it_can_find_all_invoces_by_merch_id
+    merch_id = 26
+    results = merch_repo.invoices(merch_id)
+    assert_equal 2, results.count
+  end
+
+  def test_it_can_find_all_invoices_by_merch_id
+    merch_id = 78
+    results = merch_repo.invoices(merch_id)
+    assert_equal 1, results.count
+    assert_equal  4, results[0].customer_id
+  end
+
+
+  
+
 
 
    

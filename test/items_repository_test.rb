@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/items_repository'
+require './lib/sales_engine'
 require 'csv'
 require 'pry'
 require 'bigdecimal'
@@ -10,7 +11,7 @@ class ItemsRepositoryTest < Minitest::Test
 
   def setup
     filename ="test/fixtures/items.csv"
-    parent_engine = "parent"
+    parent_engine = SalesEngine.new
     @items_repo = ItemsRepository.new(filename,parent_engine)
   end
 
@@ -64,6 +65,19 @@ class ItemsRepositoryTest < Minitest::Test
     results = items_repo.find_all_by_name("Item Autem Minima")
     assert_equal 1, results.count
   end
+
+  def test_it_can_find_invoice_items
+    results = items_repo.invoice_items(539)
+    assert_equal 2, results.count
+    assert_equal 5, results[0].quantity
+  end
+
+  def test_it_can_find_merchants_associated_with_items
+    results = items_repo.merchant(1)
+    assert_equal "Schroeder-Jerde", results.name
+  end
+
+
 
 
 

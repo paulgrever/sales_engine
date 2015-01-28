@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/customer_repository'
+require './lib/sales_engine'
 require 'csv'
 require 'pry'
 
@@ -11,7 +12,7 @@ class CustomerRepositoryTest < Minitest::Test
     #uniq data
     filename2 = "test/fixtures/double_customers.csv"
     #data with double first names
-    parent_engine = "parent"
+    parent_engine = SalesEngine.new
     @cust_repo = CustomerRepository.new(filename, parent_engine)
     @cust_repo_double = CustomerRepository.new(filename2, parent_engine)
   end
@@ -137,6 +138,12 @@ class CustomerRepositoryTest < Minitest::Test
     input_id = 10
     results = cust_repo_double.find_all_by_id(input_id)
     assert_equal 0, results.count
+  end
+
+  def test_it_can_find_all_invoices_associated_with_a_customer
+    input = 1
+    results = cust_repo.invoices(input)
+    assert_equal 4, results.size
   end
 
 

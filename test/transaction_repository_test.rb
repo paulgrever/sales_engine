@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/transaction_repository'
+require './lib/sales_engine'
 require 'pry'
 
 class TransactionRepositoryTest < Minitest::Test
@@ -9,7 +10,7 @@ class TransactionRepositoryTest < Minitest::Test
     filename = "test/fixtures/transactions.csv"
     filename2 = "test/fixtures/double_transaction.csv"
 
-    parent_engine = "parent"
+    parent_engine = SalesEngine.new
     @tran_repo = TransactionRepository.new(filename, parent_engine)
     @tran_repo2 = TransactionRepository.new(filename2, parent_engine)
 
@@ -26,17 +27,17 @@ class TransactionRepositoryTest < Minitest::Test
 
   def test_it_can_find_a_transaction_by_id
     results = tran_repo.find_by_id(3)
-    assert_equal 4354495077693036, results.credit_card_number
+    assert_equal "4354495077693036", results.credit_card_number
   end
 
   def test_it_can_find_a_transaction_by_invoice_id
     results = tran_repo.find_by_invoice_id(4)
-    assert_equal 4354495077693036, results.credit_card_number
+    assert_equal "4354495077693036", results.credit_card_number
     assert_equal 3, results.id
   end
 
   def test_it_can_find_a_transaction_by_credit_card_number
-    results = tran_repo.find_by_credit_card_number(4580251236515201)
+    results = tran_repo.find_by_credit_card_number("4580251236515201")
     assert_equal 2, results.id
     assert_equal 2, results.invoice_id
   end
@@ -67,7 +68,7 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_credit_card
-    results = tran_repo2.find_all_by_credit_card_number(4354495077693036)
+    results = tran_repo2.find_all_by_credit_card_number("4354495077693036")
     assert_equal 2, results.count
   end
 
@@ -79,6 +80,11 @@ class TransactionRepositoryTest < Minitest::Test
   def test_it_can_find_all_by_result_failed
     results = tran_repo2.find_all_by_result("failed")
     assert_equal 1, results.count
+  end
+
+  def test_it_can_find_an_invoice
+    results = tran_repo.invoice(5)
+    assert_equal 41, results.merchant_id
   end
 
 

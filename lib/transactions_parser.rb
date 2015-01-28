@@ -14,7 +14,7 @@ class TransactionsParser
     transaction_arr = transactions.map do |transaction|
       id = transaction[:id].to_i
       invoice_id = transaction[:invoice_id].to_i
-      credit_card_number = transaction[:credit_card_number].to_i
+      credit_card_number = transaction[:credit_card_number]
       credit_card_expiration_date = transaction[:credit_card_expiration_date]
       result = transaction[:result]
       created_at = transaction[:created_at]

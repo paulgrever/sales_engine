@@ -1,5 +1,6 @@
 require 'csv'
 require_relative 'items_parser'
+require_relative 'sales_engine'
 require 'pry'
 
 # id,name,description,unit_price,merchant_id,created_at,updated_at
@@ -83,6 +84,14 @@ class ItemsRepository
 
     def find_all_by_updated_at(input_updated_date)
       items.find_all { |item| item.updated_at == input_updated_date}
+    end
+
+    def invoice_items(input_item_id)
+      parent_engine.invoice_item_repository.find_all_by_item_id(input_item_id)
+    end
+
+    def merchant(input_merchant_id)
+      parent_engine.merchant_repository.find_by_id(input_merchant_id)
     end
 end
 

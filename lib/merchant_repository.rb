@@ -1,7 +1,8 @@
 require 'csv'
+require 'pry'
 require_relative 'merchant_parser'
 require_relative 'sales_engine'
-require 'pry'
+
 class MerchantRepository
   attr_reader :parent_engine, :all_merchant_list
 
@@ -31,7 +32,7 @@ class MerchantRepository
   end
 
   def find_all_by_name(input_name)
-    merchants.find_all {|merchant| merchant.name == input_name }
+    merchants.find_all {|merchant| merchant.name.downcase == input_name.downcase }
   end
 
   def find_all_by_id(input_id)
@@ -42,11 +43,17 @@ class MerchantRepository
     all_merchant_list.parse
   end
 
-  # def items(merch_id)
-  #   binding.pry
-  #   parent_engine.item_repository.find_all_by_merchant_id(merch_id)
-  # end
+  def items(merch_id)
+    parent_engine.item_repository.find_all_by_merchant_id(merch_id)
+  end
+
+  def invoices(merch_id)
+    parent_engine.invoice_repository.find_all_by_merchant_id(merch_id)
+  end
+
+
+
+
 
 end
-
 

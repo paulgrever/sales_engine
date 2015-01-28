@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/invoice_items_repository'
+require './lib/sales_engine'
+
 require 'csv'
 require 'pry'
 
@@ -8,7 +10,7 @@ class InvoiceItemsRepositoryTest < Minitest::Test
   attr_reader :ii_repo
   def setup 
     filename = "test/fixtures/invoice_items.csv"
-    parent_engine = "parent"
+    parent_engine = SalesEngine.new
     @ii_repo = InvoiceItemsRepository.new(filename, parent_engine)
   end
 
@@ -75,4 +77,17 @@ class InvoiceItemsRepositoryTest < Minitest::Test
     results = ii_repo.find_all_by_unit_price(23324)
     assert_equal 2, results.count
   end
+
+  def test_it_can_search_invoices_by_invoice_id
+    results = ii_repo.invoice(1)
+    assert_equal "shipped", results.status
+
+  end
+
+  def test_it_can_search_items_through_invoice_id
+    results = ii_repo.item(5)
+    assert_equal "Item Expedita Aliquam", results.name
+  end
+
+
 end

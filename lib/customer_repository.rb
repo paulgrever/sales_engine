@@ -1,4 +1,5 @@
 require_relative "customers_parser"
+require_relative 'sales_engine'
 require 'pry'
 class CustomerRepository
   attr_reader :parent_engine, :all_customer_list
@@ -46,6 +47,10 @@ class CustomerRepository
 
   def customers
     all_customer_list.parse
+  end
+
+  def invoices(customer_id)
+    parent_engine.invoice_repository.find_all_by_customer_id(customer_id)
   end
 
 end

@@ -72,6 +72,23 @@ class InvoiceRepository
     invoices.find_all {|invoice| invoice.updated_at == input_updated_date}
   end
 
+  def transactions(input_invoice_id)
+    parent_engine.transaction_repository.find_all_by_invoice_id(input_invoice_id)
+  end
+
+  def invoice_items(input_invoice_id)
+    parent_engine.invoice_item_repository.find_all_by_invoice_id(input_invoice_id)
+  end
+
+  def customer(input_cust_id)
+    parent_engine.customer_repository.find_by_id(input_cust_id)
+  end
+
+  def merchant(input_merch_id)
+    parent_engine.merchant_repository.find_by_id(input_merch_id)
+  end
+
+
 
 
 

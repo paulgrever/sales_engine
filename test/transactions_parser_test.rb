@@ -35,13 +35,13 @@ class TransactionsParserTest < Minitest::Test
 
   def test_it_accepts_only_valid_invoice_id
     results = parser.parse
-    verify = results.one? { |transaction|  transaction.invoice_id == 2}
+    verify = results.any? { |transaction|  transaction.invoice_id == 2}
     assert verify
   end
 
   def test_it_includes_valid_credit_card_number
     results = parser.parse
-    verify = results.one? {|transaction| transaction.credit_card_number == 4654405418249632}
+    verify = results.one? {|transaction| transaction.credit_card_number == "4654405418249632"}
     assert verify
   end
 
