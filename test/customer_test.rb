@@ -50,14 +50,15 @@ class CustomerIntegrationTest < Minitest::Test
   def setup
   @parent_engine = SalesEngine.new
    filename = "test/fixtures/customers.csv"
-    customer = CustomerRepository.new(filename, parent_engine)
-    @customers = customer
+    @customers = CustomerRepository.new(filename, parent_engine)
+    @customer = Customer.new(1,"Joey","Ondricka","2012-03-27 14:54:09 UTC","2012-03-27 14:54:09 UTC", parent_engine)
+
+
   end
 
   def test_it_counts_successes_by_merchant
-    input = 1
-    results = customers.invoices(input)
-
+    # results = customer.successful_transactions_by_invoice_id
+    results = customer.invo_by_cus
 
   end
 

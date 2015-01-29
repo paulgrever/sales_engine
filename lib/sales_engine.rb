@@ -10,7 +10,7 @@ class SalesEngine
   attr_reader :directory
   attr_accessor :customer_repository, :merchant_repository, :item_repository, :invoice_item_repository, :invoice_repository, :transaction_repository
 
-  def initialize(directory = './test/fixtures')
+  def initialize(directory = './data')
     #test_data director = './test/fixtures'
     #real data directory = './data'
     @customer_repository = CustomerRepository.new(directory + '/customers.csv', self)
@@ -20,25 +20,8 @@ class SalesEngine
     @invoice_repository = InvoiceRepository.new(directory + '/invoices.csv', self)
     @transaction_repository = TransactionRepository.new(directory + '/transactions.csv', self)
 
-  #   # @customer_repo = CustomerRepository.new(directory + 'customers.csv', self)
-  #   # @merchant_repo = MerchantRepository.new('./data/merchants.csv', self)
-  #   # @item_repo = ItemsRepository.new('./data/items.csv', self)
-  #   # @invoice_item_repo = InvoiceItemsRepository.new('./data/invoice_items.csv', self)
-  #   # @invoice_repo = InvoiceRepository.new('./data/invoices.csv', self)
-  #   # @transaction_repo = TransactionRepository.new('./data/transactions.csv', self)
   end
 
   def startup
-    # @customer_repository = CustomerRepository.new(directory + '/customers.csv', self)
-    # @merchant_repository = MerchantRepository.new(directory + '/merchants.csv', self)
-    # @item_repository = ItemsRepository.new(directory + '/items.csv', self)
-    # @invoice_item_repository = InvoiceItemsRepository.new(directory + '/invoice_items.csv', self)
-    # @invoice_repository = InvoiceRepository.new(directory + '/invoices.csv', self)
-    # @transaction_repository = TransactionRepository.new(directory + '/transactions.csv', self)
-  end
-
-  def directory
-    './test/fixtures'
-    #real data directory = './data'
   end
 end

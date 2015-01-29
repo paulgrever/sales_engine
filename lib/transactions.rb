@@ -18,7 +18,11 @@ class Transactions
     parent_engine.invoice_repository.find_by_id(@invoice_id)
   end
 
-  def successful?
+  def successful_transaction?
     result == "success"
+  end
+
+  def failed_transaction?
+    result == "failed"
   end
 end
