@@ -10,7 +10,7 @@ class SalesEngine
   attr_reader :directory
   attr_accessor :customer_repository, :merchant_repository, :item_repository, :invoice_item_repository, :invoice_repository, :transaction_repository
 
-  def initialize(directory = './data')
+  def initialize(directory = './test/fixtures')
     #test_data director = './test/fixtures'
     #real data directory = './data'
     @customer_repository = CustomerRepository.new(directory + '/customers.csv', self)

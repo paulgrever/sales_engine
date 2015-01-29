@@ -25,7 +25,6 @@ class Customer
   def invo_by_cus
     cust_invo = parent_engine.invoice_repository.find_all_by_customer_id(@id)
     succ_trans_by_cus = cust_invo.select do |cust_invo|
-      binding.pry
       parent_engine.transaction_repository.find_all_by_invoice_id(cust_invo.id)
     end
 
