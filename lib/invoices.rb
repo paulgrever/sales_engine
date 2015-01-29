@@ -37,7 +37,4 @@ class Invoices
   def successful_transactions?
     parent_engine.transaction_repository.find_all_by_result("success")
   end
-
-  
-
 end

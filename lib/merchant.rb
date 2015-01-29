@@ -18,10 +18,6 @@ class Merchant
 
   def invoices
     parent_engine.invoice_repository.find_all_by_merchant_id(@id)
-  end
-
-  
+  end  
 end
 
-# test = Merchants.new("3", "paul", "9/20", "9/21")
-# puts test.name

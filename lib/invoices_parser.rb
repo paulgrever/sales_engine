@@ -23,7 +23,4 @@ class InvoicesParser
   end
 end
 
-  # parent_klass = "test"
-  # filename = "./test/fixtures/invoices.csv"
-  # test = InvoicesParser.new(filename, parent_klass)
-  # puts test
+

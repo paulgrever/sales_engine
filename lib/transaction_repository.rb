@@ -81,9 +81,6 @@ class TransactionRepository
     transactions.result == "success"
   end
 end
-# filename = "./data/transactions.csv"
-# test = TransactionRepository.new(filename, "parent")
-# andrew = test.find_by_credit_card_number("4634664005836219")
-# binding.pry
+
 
 # id,invoice_id,credit_card_number,credit_card_expiration_date,result,created_at,updated_at

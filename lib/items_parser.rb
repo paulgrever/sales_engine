@@ -1,7 +1,6 @@
 require_relative 'items'
 require 'pry'
 require 'csv'
-require 'bigdecimal'
 
 class ItemsParser
   attr_reader :parse, :parent_klass
@@ -23,10 +22,6 @@ class ItemsParser
 
       Items.new(id,name,description, unit_price, merchant_id, created_at,updated_at, parent_klass)
     end
-  end
-
-  def price_converter(unit_price)
-    price = BigDecimal.new(unit_price)
   end
 end
 

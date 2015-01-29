@@ -50,10 +50,5 @@ class MerchantRepository
   def invoices(merch_id)
     parent_engine.invoice_repository.find_all_by_merchant_id(merch_id)
   end
-
-
-
-
-
 end
 

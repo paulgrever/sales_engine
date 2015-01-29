@@ -49,18 +49,8 @@ class CustomerRepository
     all_customer_list.parse
   end
 
-
   def invoices(customer_id)
     parent_engine.invoice_repository.find_all_by_customer_id(customer_id)
   end
-
-
 end
 
-# filename = "test/fixtures/customers.csv"
-# test = CustomerRepository.new(filename, "test")
-# custom = test.customers
-
-
-# binding.pry
-# p custom

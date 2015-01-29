@@ -23,13 +23,4 @@ class TransactionsParser
     end
   end
 end
-  # parent_klass = "test"
-  # filename = "./test/fixtures/transactions.csv"
-  # test =TransactionsParser.new(filename, parent_klass)
-  # puts test
 
-  #shorten to cc_num/cc_num_exp_date
-
-  # CSV.open('newfile.csv', 'w') do |csv|
-  #   csv << ["a string", "another string"]
-  # end
